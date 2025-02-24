@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Environment</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>Select Your Environment</h1>
+    <p>Choose a theme to start your game:</p>
+    <div class="environment-grid">
+      <div class="environment-card" data-environment="fruits">🍎 Fruits</div>
+      <div class="environment-card" data-environment="birds">🦜 Birds</div>
+      <div class="environment-card" data-environment="cars">🚗 Cars</div>
+      <div class="environment-card" data-environment="clothes">👗 Clothes</div>
+      <div class="environment-card" data-environment="electronics">💻 Electronics</div>
+      <div class="environment-card" data-environment="animals">🐶 Animals</div>
+      <div class="environment-card" data-environment="nature">🌳 Nature</div>
+    </div>
+  </div>
+
+  <script>
+    // Add event listeners to environment cards
+    const cards = document.querySelectorAll('.environment-card');
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const environment = card.getAttribute('data-environment');
+        window.location.href = `/index?environment=${environment}`;
+      });
+    });
+  </script>
+</body>
+</html>

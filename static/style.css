@@ -1,0 +1,277 @@
+/* === Base Styles === */
+
+/* Gradient Background */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0d3c26, #daf2ce);
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Gradient Animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* === Game Container === */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(218, 242, 206, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Typography for Titles and Paragraphs */
+.game-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #0d3c26;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.game-container p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #0d3c26;
+  animation: fadeIn 1.5s ease-out 0.3s;
+}
+
+/* === Buttons === */
+.button {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 12px 25px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #0d3c26, #daf2ce);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(37, 117, 252, 0.5);
+}
+
+.button:hover {
+  background: linear-gradient(45deg, #0d3c26, #0d3c26);
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 55, 255, 0.7);
+}
+
+.button:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 10px rgba(37, 117, 252, 0.3);
+}
+
+/* === Scoreboard === */
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.scoreboard div {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #0d3c26, #daf2ce);
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  text-align: center;
+}
+
+.scoreboard div.updated {
+  animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* === Environment Selection === */
+.environment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.environment-card {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #0d3c26, #daf2ce);
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(37, 117, 252, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.environment-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(37, 117, 252, 0.5);
+}
+
+/* === Cards === */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.card {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateY(0);
+  transition: transform 0.5s;
+}
+
+.card.flip .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.card-front {
+  background-color: #0d3c26;
+  color: white;
+}
+
+.card-back {
+  background-color: #fff;
+  border: 2px solid #0d3c26;
+  transform: rotateY(180deg);
+}
+
+.card.flip .card-front {
+  background-color: #daf2ce;
+  color: #000;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.card.matched .card-inner {
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px #00ff00;
+  }
+  100% {
+    box-shadow: 0 0 20px #00ff00;
+  }
+}
+
+/* === Modal === */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  background: #daf2ce;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  margin: 0 0 10px;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-actions .button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-actions .button:hover {
+  transform: scale(1.05);
+}

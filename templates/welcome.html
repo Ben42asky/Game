@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Memory Card Game</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1 class="fade-in">Welcome to the Memory Card Matching Game!</h1>
+    <p class="fade-in delay-1">Challenge your memory skills and see how fast you can match all the pairs!</p>
+    <button id="start-game" class="button slide-in">Start Game</button>
+  </div>
+
+  <script>
+    document.getElementById('start-game').addEventListener('click', () => {
+      window.location.href = '/index';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Card Matching Game</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="game-container">
+    <!-- Scoreboard -->
+    <div class="scoreboard">
+      <div id="moves">Moves: 0</div>
+      <div id="timer">Time: 00:00</div>
+      <button id="restart" class="button">Restart Game</button>
+    </div>
+
+    <!-- Game Grid -->
+    <div class="card-grid" id="card-grid">
+      <!-- Cards will be dynamically generated here -->
+    </div>
+  </div>
+  <div id="completion-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Congratulations!</h2>
+      <p>You completed the game in <span id="final-moves"></span> moves and <span id="final-time"></span>.</p>
+      <div class="modal-actions">
+        <button id="new-environment" class="button">Choose New Environment</button>
+        <button id="quit-game" class="button">Quit</button>
+      </div>
+    </div>
+  </div>
+  
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>
